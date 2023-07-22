@@ -18,6 +18,7 @@ export const Button = styled.button`
   border: none;
   border-radius: 4px;
   align-self: center;
+  background-color: #D8D8D8;
 
     &:hover {
     background-color: #a756c5;
