@@ -5,6 +5,9 @@ import Filter from "./Filter/Filter";
 import ContactForm from "./ContactForm/ContactForm";
 import { Container } from "./App.styled";
 
+  import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
+
 class App extends Component {
   state = {
     contacts: [],
@@ -28,7 +31,10 @@ class App extends Component {
   handleSubmit = e => {
     e.preventDefault()
   if (this.state.contacts.some((contact) => contact.name.toLowerCase() === this.state.name.toLowerCase())) {
-    alert(this.state.name + " is already in contact!");
+    toast.error(`${this.state.name} Is already in contact !`, {
+        position: toast.POSITION.TOP_CENTER
+      });
+;
     return;
   }
     let contact = {
@@ -40,13 +46,23 @@ class App extends Component {
     this.setState((prevState) => ({
       contacts: [...prevState.contacts, contact],
     }))
+
+    toast.success("Success !", {
+        position: toast.POSITION.TOP_CENTER
+    });
+    
     e.target.reset()
   }
 
   contactDelete = (id) => {
-    this.setState((prevState) => {
-      return { contacts: prevState.contacts.filter(contact => contact.id !== id) }
+    this.setState((prevState) => { 
+      return {
+        contacts: prevState.contacts.filter(contact => contact.id !== id)
+      }
     })
+          toast.warn("Deleted !", {
+        position: toast.POSITION.TOP_CENTER
+      });
   }
   
   filteredContacts = () => {
@@ -66,7 +82,8 @@ class App extends Component {
     <ContactForm handleSubmit={ this.handleSubmit} handleInputChange={this.handleInputChange } />
     <h2>Contacts</h2>
     <Filter handleInputChange={this.handleInputChange } />
-    <ContactList contacts={this.filteredContacts()} contactDelete={this.contactDelete} />
+        <ContactList contacts={this.filteredContacts()} contactDelete={this.contactDelete} />
+        <ToastContainer />
 </Container>
     );
   }
