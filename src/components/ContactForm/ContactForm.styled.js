@@ -10,6 +10,9 @@ export const Label = styled.label`
   display: flex;
   flex-direction: column;
   gap: 10px;
+  width: 250px;
+  margin: 0 auto;
+  text-align: left;
   `
 
 export const Button = styled.button`

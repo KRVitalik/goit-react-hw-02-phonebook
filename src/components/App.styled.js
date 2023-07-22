@@ -9,4 +9,5 @@ margin: 40px auto;
 padding: 24px;
 border: 2px solid black;
 background-color: #FAFAFA ;
+text-align: center;
   `
