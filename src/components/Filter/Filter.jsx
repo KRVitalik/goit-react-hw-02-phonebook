@@ -1,10 +1,11 @@
-import { Label } from "components/ContactForm/ContactForm.styled";
+import { InputForm, Label } from "components/ContactForm/ContactForm.styled";
 import React from "react";
+import PropTypes from 'prop-types';
 
 const Filter = ({handleInputChange}) => {
     return ( 
         <Label>Find contact by name
-            <input
+            <InputForm
   onChange={handleInputChange}
   type="text"
   name="filter"
@@ -15,5 +16,9 @@ const Filter = ({handleInputChange}) => {
         </Label>
      );
 }
- 
+
+Filter.propTypes = {
+    handleInputChange: PropTypes.func,
+}
+
 export default Filter

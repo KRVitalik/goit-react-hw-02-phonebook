@@ -15,6 +15,13 @@ export const Label = styled.label`
   text-align: left;
   `
 
+export const InputForm = styled.input`
+  height: 24px;
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 2px 16px;
+  `
+
 export const Button = styled.button`
   margin-top: 8px;
   cursor: pointer;

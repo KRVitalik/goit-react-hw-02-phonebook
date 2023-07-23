@@ -1,12 +1,13 @@
 import React from "react";
-import { Button, FormContainer, Label } from "./ContactForm.styled";
+import { Button, FormContainer, InputForm, Label } from "./ContactForm.styled";
+import PropTypes from 'prop-types';
 
 const ContactForm = ({handleInputChange, handleSubmit}) => {
     return ( 
               <div>
               <FormContainer onSubmit={handleSubmit}>
         <Label>Name
-            <input
+            <InputForm
   type="text"
   placeholder="Name"
               name="name"
@@ -16,7 +17,7 @@ const ContactForm = ({handleInputChange, handleSubmit}) => {
           />
           </Label>
           <Label>Number
-            <input
+            <InputForm
   type="tel"
   name="number"
   placeholder="123-45-67"
@@ -31,6 +32,10 @@ const ContactForm = ({handleInputChange, handleSubmit}) => {
 </div>
      );
 }
- 
 
+ContactForm.propTypes = {
+    handleInputChange: PropTypes.func,
+    handleSubmit: PropTypes.func,
+}
+ 
 export default ContactForm;
