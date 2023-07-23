@@ -30,8 +30,10 @@ class App extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
-  if (this.state.contacts.some((contact) => contact.name.toLowerCase() === this.state.name.toLowerCase())) {
-    toast.error(`${this.state.name} Is already in contact !`, {
+    let {contacts, name} = this.state
+  if (contacts.some((contact) => contact.name.toLowerCase() === name.toLowerCase())) {
+    
+    toast.error(`${this.state.name} is already in contact !`, {
         position: toast.POSITION.TOP_CENTER
       });
 ;
@@ -47,7 +49,7 @@ class App extends Component {
       contacts: [...prevState.contacts, contact],
     }))
 
-    toast.success("Success !", {
+    toast.success(`You add contact ${this.state.name} to your phonebook.`, {
         position: toast.POSITION.TOP_CENTER
     });
     
@@ -60,7 +62,7 @@ class App extends Component {
         contacts: prevState.contacts.filter(contact => contact.id !== id)
       }
     })
-          toast.warn("Deleted !", {
+          toast.warn(`You deleted contact ${this.state.name} from your phonebook.`, {
         position: toast.POSITION.TOP_CENTER
       });
   }
